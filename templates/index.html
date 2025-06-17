@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIOLÃO AI</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>VIOLÃO AI</h1>
+        <div class="controls">
+            <label for="audio-device">Escolha o dispositivo de áudio:</label>
+            <select id="audio-device"></select>
+            <button id="start-btn">Iniciar Reconhecimento</button>
+            <button id="stop-btn" disabled>Parar Reconhecimento</button>
+        </div>
+
+        <div class="result">
+            <p>Acorde Detectado:</p> <h2 id="detected-note">Aguardando áudio...</h2>
+        </div>
+
+        <div class="info">
+            <p>Certifique-se de que seu microfone ou interface de áudio esteja conectado e selecionado.</p>
+            <p>Este sistema foi treinado para reconhecer acordes de violão (ex: C_major, G_minor, D_7). A precisão depende do dataset de treinamento.</p> </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    color: #0056b3;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #495057;
+    font-size: 1.1em;
+}
+
+.controls select {
+    width: calc(100% - 24px); 
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #f8f9fa;
+    appearance: none; /* Remove default arrow on some browsers */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23495057%22%20d%3D%22M287%2C197.6c-4.3%2C4.3-9.9%2C6.4-15.5%2C6.4c-5.6%2C0-11.2-2.1-15.5-6.4L146.2%2C80.3L36.4%2C190.1c-4.3%2C4.3-9.9%2C6.4-15.5%2C6.4c-5.6%2C0-11.2-2.1-15.5-6.4c-8.5-8.5-8.5-22.1%2C0-30.6l120.4-120.4c8.5-8.5%2C22.1-8.5%2C30.6%2C0l120.4%2C120.4C295.5%2C175.5%2C295.5%2C189.1%2C287%2C197.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.65em auto;
+}
+
+.controls button {
+    padding: 12px 25px;
+    margin: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+
+#start-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+#start-btn:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#stop-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+#stop-btn:hover:not(:disabled) {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.result {
+    margin-top: 40px;
+    padding: 25px;
+    border: 3px dashed #007bff;
+    border-radius: 10px;
+    background-color: #e7f0ff;
+    animation: pulseBorder 2s infinite ease-in-out;
+}
+
+@keyframes pulseBorder {
+    0% { border-color: #007bff; }
+    50% { border-color: #66b3ff; }
+    100% { border-color: #007bff; }
+}
+
+
+.result p {
+    font-size: 1.2em;
+    color: #0056b3;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+#detected-note {
+    font-size: 4.5em;
+    font-weight: 700;
+    color: #17a2b8;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+    animation: fadein 0.5s;
+    word-wrap: break-word; 
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.info {
+    margin-top: 30px;
+    font-size: 0.95em;
+    color: #6c757d;
+    text-align: left;
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.info p {
+    margin-bottom: 8px;
+}
+
+.info p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 90%; 
+        padding: 25px 20px; 
+        margin: 20px 0; 
+    }
+
+    h1 {
+        font-size: 1.8em; 
+    }
+
+    #detected-note {
+        font-size: 3em; 
+    }
+
+    .controls button {
+        display: block;
+        width: 90%; 
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px; 
+    }
+
+    .result {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .info {
+        padding: 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.6em;
+    }
+
+    #detected-note {
+        font-size: 2.5em; 
+    }
+
+    .controls button {
+        font-size: 1em; 
+        padding: 12px 20px;
+    }
+}
