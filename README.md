@@ -1,7 +1,7 @@
 
 # VIOLÃO AI
 
-Este projeto treina um dataset de audios de acordes musicais com o metodo CNN e disponibiliza uma API Flask para visualizar uma interface onde o usuário podera ver o recenhecimento do acorde tocado.
+Este projeto treina um dataset de audios de acordes musicais com o metodo CNN 1D e disponibiliza uma API Flask para visualizar uma interface onde o usuário podera ver o reconhecimento do acorde tocado.
 
 ---
 
