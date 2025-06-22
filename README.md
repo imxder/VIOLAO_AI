@@ -95,7 +95,7 @@ Você verá a interface web com imagens dos produtos, recomendados pelo modelo.
 ├── app.py                     # API Flask (Aplicação Principal)
 ├── baixar_dataset.py          # Script para baixar o dataset (via gdown)
 ├── train_model.py             # Script para treinar modelo (CNN 1D)
-├── audio_catpure.py           # Script para captura de áudio do usuário (Microfone ou Interface)
+├── audio_capture.py           # Script para captura de áudio do usuário (Microfone ou Interface)
 |
 ├── requirements.txt           # Dependências do projeto
 |
