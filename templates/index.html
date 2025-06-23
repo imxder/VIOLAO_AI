@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIOLÃO AI</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>VIOLÃO AI - Detector de Acordes</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>VIOLÃO AI</h1>
+        <div class="header">
+            <h1>VIOLÃO AI</h1>
+        </div>
+        <p class="subtitle">Detector de Acordes em Tempo Real</p>
+
         <div class="controls">
-            <label for="audio-device">Escolha o dispositivo de áudio:</label>
-            <select id="audio-device"></select>
-            <button id="start-btn">Iniciar Reconhecimento</button>
-            <button id="stop-btn" disabled>Parar Reconhecimento</button>
+            <label for="audio-device">Escolha o dispositivo de entrada:</label>
+            <div class="select-wrapper">
+                <select id="audio-device"></select>
+            </div>
+            <div class="button-group">
+                <button id="start-btn">Iniciar</button>
+                <button id="stop-btn" disabled>Parar</button>
+            </div>
         </div>
 
         <div class="result">
-            <p>Acorde Detectado:</p> <h2 id="detected-note">Aguardando áudio...</h2>
+            <h2 id="detected-note">--</h2>
+            <div class="listening-indicator">
+                <span></span><span></span><span></span>
+            </div>
         </div>
 
         <div class="info">
-            <p>Certifique-se de que seu microfone ou interface de áudio esteja conectado e selecionado.</p>
-            <p>Este sistema foi treinado para reconhecer acordes de violão (ex: C_major, G_minor, D_7). A precisão depende do dataset de treinamento.</p> </div>
+            <p><strong>Como usar:</strong> Selecione seu microfone, clique em "Iniciar" e toque um acorde no violão.</p>
+            <p><strong>Precisão:</strong> O sistema foi treinado para reconhecer acordes maiores. A clareza do som é fundamental para a precisão.</p>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
