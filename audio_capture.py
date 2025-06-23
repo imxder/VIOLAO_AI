@@ -73,7 +73,7 @@ def start_recording(device_id=None):
 
 def stop_recording():
     global stream, is_recording
-    if stream is not None and stream.is_active:
+    if stream is not None and stream.active:
         stream.stop()
         stream.close()
         is_recording = False
