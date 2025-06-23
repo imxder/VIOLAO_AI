@@ -16,7 +16,7 @@ Este projeto treina um dataset de audios de acordes musicais com o metodo CNN 1D
 ### Passo 1: Clone o repositório
 
 ```bash
-git clone https://github.com/imxder/shopee-product-matching
+git clone https://github.com/imxder/VIOLAO_AI.git
 cd VIOLAO_AI
 ```
 
