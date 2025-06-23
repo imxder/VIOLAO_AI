@@ -5,7 +5,7 @@ import os
 import numpy as np
 from collections import deque, Counter # Importa 'deque' e 'Counter'
 
-from model import load_trained_model, predict_note, extract_features, SAMPLE_RATE, N_MFCC, MAX_PAD_LEN
+from train_model import load_trained_model, predict_note, extract_features, SAMPLE_RATE, N_MFCC, MAX_PAD_LEN
 from audio_capture import start_recording, stop_recording, get_audio_segment, list_audio_devices, SAMPLE_RATE as AUDIO_SAMPLE_RATE
 
 app = Flask(__name__)
