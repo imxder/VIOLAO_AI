@@ -10,3 +10,5 @@ Flask
 seaborn
 matplotlib
 gdown
+pytest
+pytest-mock

@@ -17,8 +17,8 @@ prediction_thread = None
 prediction_active = False
 current_note = "Aguardando áudio..."
 
-PREDICTION_BUFFER_SIZE = 12   
-STABILITY_THRESHOLD = 9   
+PREDICTION_BUFFER_SIZE = 8   
+STABILITY_THRESHOLD = 8  
 prediction_buffer = deque(maxlen=PREDICTION_BUFFER_SIZE)
 stable_note = "Aguardando áudio..."
 
@@ -87,7 +87,7 @@ def audio_prediction_loop():
             print(f"Erro no loop de predição: {e}")
             prediction_active = False 
         
-        time.sleep(0.1) 
+        time.sleep(0.08) 
 
 @app.route('/start_recognition', methods=['POST'])
 def start_recognition():
