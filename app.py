@@ -17,8 +17,8 @@ prediction_thread = None
 prediction_active = False
 current_note = "Aguardando áudio..."
 
-PREDICTION_BUFFER_SIZE = 8   
-STABILITY_THRESHOLD = 8  
+PREDICTION_BUFFER_SIZE = 12   
+STABILITY_THRESHOLD = 9  
 prediction_buffer = deque(maxlen=PREDICTION_BUFFER_SIZE)
 stable_note = "Aguardando áudio..."
 
