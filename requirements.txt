@@ -12,3 +12,4 @@ matplotlib
 gdown
 pytest
 pytest-mock
+gunicorn
