@@ -8,7 +8,7 @@ SAMPLE_RATE = 22050
 BLOCK_SIZE = 1024    
 CHANNELS = 1         
 DTYPE = 'float32'    
-RECORD_DURATION = 0.75 
+RECORD_DURATION = 1.5  # deve ser igual a WINDOW_SECONDS em train_model.py
 
 BUFFER_SIZE_SECONDS = 3 
 audio_buffer = np.zeros(int(SAMPLE_RATE * BUFFER_SIZE_SECONDS), dtype=DTYPE)

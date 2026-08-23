@@ -2,13 +2,16 @@ from flask import Flask, render_template, request, jsonify
 import threading
 import time
 import os
+import io
 import numpy as np
+import librosa
 from collections import deque, Counter # Importa 'deque' e 'Counter'
 
-from train_model import load_trained_model, predict_note, extract_features, SAMPLE_RATE, N_MFCC, MAX_PAD_LEN
+from train_model import load_trained_model, predict_note, recognize_chord, extract_features, SAMPLE_RATE, N_MFCC, MAX_PAD_LEN
 from audio_capture import start_recording, stop_recording, get_audio_segment, list_audio_devices, SAMPLE_RATE as AUDIO_SAMPLE_RATE
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5 MB por chunk de audio recebido
 
 model_loaded = None
 encoder_loaded = None
@@ -46,6 +49,30 @@ def get_audio_devices():
     devices = list_audio_devices()
     device_list = [{'id': d['index'], 'name': d['name'], 'max_input_channels': d['max_input_channels']} for d in devices]
     return jsonify(device_list)
+
+
+@app.route('/predict_chord', methods=['POST'])
+def predict_chord():
+    """Endpoint para o app Flutter: recebe um chunk de audio gravado no
+    cliente (campo 'audio' em multipart/form-data) e retorna o acorde
+    reconhecido. Grave chunks de ~RECORD_DURATION segundos em WAV -
+    outros formatos (mp3/m4a) podem falhar aqui pois este ambiente nao
+    tem ffmpeg instalado para decodifica-los."""
+    if model_loaded is None or encoder_loaded is None or scaler_loaded is None:
+        return jsonify(status='error', message='Modelo de reconhecimento não carregado.'), 503
+
+    if 'audio' not in request.files:
+        return jsonify(status='error', message="Campo 'audio' ausente na requisição (multipart/form-data)."), 400
+
+    audio_file = request.files['audio']
+    try:
+        audio_np, _ = librosa.load(io.BytesIO(audio_file.read()), sr=SAMPLE_RATE, mono=True)
+    except Exception as e:
+        return jsonify(status='error', message=f'Não foi possível decodificar o áudio: {e}'), 400
+
+    result = recognize_chord(audio_np, model_loaded, encoder_loaded, scaler_loaded,
+                              sample_rate=SAMPLE_RATE, n_mfcc=N_MFCC, max_pad_len=MAX_PAD_LEN)
+    return jsonify(result)
 
 def audio_prediction_loop():
     global current_note, prediction_active, prediction_buffer, stable_note
