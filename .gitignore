@@ -2,3 +2,7 @@
 .claude/
 dataset/
 __MACOSX/
+__pycache__/
+*.pyc
+.DS_Store
+trained_model_experiment/
